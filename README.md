@@ -16,3 +16,4 @@ O principal pré requisito para execução do projeto é possuir a linguagem Pyt
 ### Requisitos para o sistema
 
 O objetivo é criar uma aplicação, criando classes para **cliente** e operações de **depósito** e **saque**.
+Para a construção da aplicação, iremos utilizar o Diagrama com as orientações sobre os objetos a serem criados.

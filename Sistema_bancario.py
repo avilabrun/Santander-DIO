@@ -51,7 +51,17 @@ def menu():
     return int(input(menu))
 
 def cadastrar_usuario(usuarios):
-    pass
+    cpf = input("\nInforme o CPF (somente números): ")
+
+    usuario = filtrar_usuario(cpf, usuarios)
+
+    nome = input("Informe o nome completo: ")
+    nascimento = input("Informe a Data de Nascimento: ")
+    endereco = input("Informe o endereço (logradouro, número, bairro, sigla da cidade/sigla do estado): ")
+
+    usuarios.append({"nome" : nome, "nascimento" : nascimento, "cpf": cpf, "endereco" : endereco})
+
+    print("\nUsuário criado com sucesso!")
 
 def filtrar_usuario(cpf, usuarios):
     pass
@@ -75,6 +85,36 @@ def exibir_extrato(saldo, extrato, /, *, data=None):
     pass
 
 def main():
-    pass
+    while True:
+        options = menu()
+
+        if options == 1: # Cadastrar usuário
+            cadastrar_usuario()
+
+        elif options == 2: # Cadastrar conta
+            cadastrar_conta()
+
+        elif options == 3: # Listar contas
+            listar_contas()
+
+        elif options == 4: # Consultar saldo
+            consultar_saldo()
+        
+        elif options == 5: # Consultar extrato
+            exibir_extrato()
+
+        elif options == 6: # Sacar
+            pass
+
+        elif options == 7: # Depositar
+            pass
+
+        elif options == 0: # Sair
+            print("Obrigado por usar nossos serviços!")
+            break
+
+        else:
+            print("Opção invalida!\nPor favor insira uma opção válida.")
+
 
 main()
