@@ -57,9 +57,8 @@ def cadastrar_usuario(usuarios):
 
     nome = input("Informe o nome completo: ")
     nascimento = input("Informe a Data de Nascimento: ")
-    endereco = input("Informe o endereço (logradouro, número, bairro, sigla da cidade/sigla do estado): ")
 
-    usuarios.append({"nome" : nome, "nascimento" : nascimento, "cpf": cpf, "endereco" : endereco})
+    usuarios.append({"nome" : nome, "nascimento" : nascimento, "cpf": cpf})
 
     print("\nUsuário criado com sucesso!")
 
