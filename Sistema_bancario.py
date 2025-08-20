@@ -55,15 +55,30 @@ def cadastrar_usuario(usuarios):
 
     usuario = filtrar_usuario(cpf, usuarios)
 
+    if usuario:
+        print("\nJá existe usuário com o CPF informado!")
+        return
+
     nome = input("Informe o nome completo: ")
     nascimento = input("Informe a Data de Nascimento: ")
+    endereco = input("Informe o endereço (logradouro, número, bairro, sigla da cidade/sigla do estado): ")
 
-    usuarios.append({"nome" : nome, "nascimento" : nascimento, "cpf": cpf})
+    usuarios.append({"nome" : nome, "nascimento" : nascimento, "cpf": cpf, "endereco" : endereco})
 
     print("\nUsuário criado com sucesso!")
 
 def filtrar_usuario(cpf, usuarios):
-    pass
+    # List comprehension para filtrar usuários
+    usuarios_filtrados = []
+    for usuario in usuarios:
+        if usuario["cpf"] == cpf:
+            usuarios_filtrados.append(usuario)
+    
+    # Retorna o primeiro usuário encontrado ou None se não houver
+    if len(usuarios_filtrados) > 0:
+        return usuarios_filtrados[0] 
+    else:
+        return None
 
 def cadastrar_conta(usuarios, contas):
     pass
@@ -84,11 +99,14 @@ def exibir_extrato(saldo, extrato, /, *, data=None):
     pass
 
 def main():
+    usuarios = []
+    contas = []
+
     while True:
         options = menu()
 
         if options == 1: # Cadastrar usuário
-            cadastrar_usuario()
+            cadastrar_usuario(usuarios)
 
         elif options == 2: # Cadastrar conta
             cadastrar_conta()
