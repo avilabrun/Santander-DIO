@@ -105,14 +105,18 @@ def listar_contas(contas):
 def consultar_saldo(saldo):
     print(f"\nSaldo:         R$ {saldo:.2f}")
 
-def sacar(saldo, valor, extrato, limite, numero_saques, limite_saques):
+def sacar():
     pass
 
-def depositar(saldo, valor, extrato):
+def depositar():
     pass
 
-def exibir_extrato(saldo, extrato, /, *, data=None):
-    pass
+def exibir_extrato(saldo, /, *, extrato):
+    print("\n***************** EXTRATO *****************")
+    print(extrato if extrato else "Não foram realizadas operações.")
+    print("\n*******************************************")
+    print(f"Saldo:         R$ {saldo:.2f}")
+    print("\n*******************************************")
 
 def main():
     usuarios = []
@@ -142,13 +146,13 @@ def main():
                 contas.append(conta)
 
         elif options == 3: # Listar contas
-            listar_contas()
+            listar_contas(contas)
 
         elif options == 4: # Consultar saldo
             consultar_saldo(saldo)
         
         elif options == 5: # Consultar extrato
-            exibir_extrato()
+            exibir_extrato(saldo, extrato=extrato)
 
         elif options == 6: # Sacar
             valor = float(input("Informe o valor do saque: "))
