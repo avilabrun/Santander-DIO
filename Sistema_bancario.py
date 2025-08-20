@@ -80,14 +80,30 @@ def filtrar_usuario(cpf, usuarios):
     else:
         return None
 
-def cadastrar_conta(usuarios, contas):
-    pass
+def cadastrar_conta(agencia, numero_conta, usuarios):
+    cpf = input("\nInforme o CPF (somente números): ")
+    
+    usuario = filtrar_usuario(cpf, usuarios)
+
+    if usuario:
+        print("\nConta criada para o usuário informado!")
+        print(f"Agência: {agencia} - Conta: {numero_conta}")
+        
+        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
+        
+    # else:
+    print("\nUsuário não cadastrado. Por favor cadastre um usuário.")
 
 def listar_contas(contas):
-    pass
+    for conta in contas:
+        linha = f"""
+        Titular: {conta['usuario']['nome']}
+            Agência: {conta['agencia']} - Conta: {conta['numero_conta']}
+        """
+    print(linha)
 
-def consultar_saldo(conta):
-    pass
+def consultar_saldo(saldo):
+    print(f"\nSaldo:         R$ {saldo:.2f}")
 
 def sacar(saldo, valor, extrato, limite, numero_saques, limite_saques):
     pass
@@ -100,8 +116,18 @@ def exibir_extrato(saldo, extrato, /, *, data=None):
 
 def main():
     usuarios = []
+
+    AGENCIA = "0001"
     contas = []
 
+    saldo = 0
+    extrato = ""
+
+    limite_saque = 500
+    numero_saques = 0
+
+    SAQUES_DIARIOS = 3
+    
     while True:
         options = menu()
 
@@ -109,22 +135,26 @@ def main():
             cadastrar_usuario(usuarios)
 
         elif options == 2: # Cadastrar conta
-            cadastrar_conta()
+            numero_conta = len(contas) + 1
+            conta = cadastrar_conta(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
 
         elif options == 3: # Listar contas
             listar_contas()
 
         elif options == 4: # Consultar saldo
-            consultar_saldo()
+            consultar_saldo(saldo)
         
         elif options == 5: # Consultar extrato
             exibir_extrato()
 
         elif options == 6: # Sacar
-            pass
+            valor = float(input("Informe o valor do saque: "))
 
         elif options == 7: # Depositar
-            pass
+            valor = float(input("Informe o valor do depósito: "))
 
         elif options == 0: # Sair
             print("Obrigado por usar nossos serviços!")
