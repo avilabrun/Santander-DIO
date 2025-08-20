@@ -15,4 +15,4 @@ O principal pré requisito para execução do projeto é possuir a linguagem Pyt
 
 ### Requisitos para o sistema
 
-Cada aplicação teraá o seu requisito para entrega do projeto. Os projetos serão separados em branches, em que cada branch trará a entrega de uma etapa.
+O objetivo é criar uma aplicação, criando classes para **cliente** e operações de **depósito** e **saque**.
